@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ListaHeroes</string>
+    <string name="Id">Id</string>
+    <string name="Name">Name</string>
+    <string name="girl_hint">LastName</string>
+    <string name="age_hint">Age</string>
+    <string name="address_hint">City</string>
+    <string name="phone_hint">Phone</string>
+    <string name="registrer_button">"REGISTRAR "</string>
+</resources>
