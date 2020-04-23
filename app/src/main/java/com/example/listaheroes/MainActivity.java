@@ -136,4 +136,42 @@ String id_buscar=editTextId.getText().toString();
         }
     }
 
+    //Método para modificar un artículo o producto
+    public void Modificar(View view){
+        AdminSqlHelper admin = new AdminSqlHelper(this, "administracion", null, 1);
+        SQLiteDatabase BaseDatabase = admin.getWritableDatabase();
+
+        String strinId = editTextId.getText().toString();
+        String strinName = editTextName.getText().toString();
+        String strinLastName = editTextLastName.getText().toString();
+        String strinAge = editTextAge.getText().toString();
+        String strinCity = editTextCity.getText().toString();
+        String strinPhone = editTextPhone.getText().toString();
+
+
+         if (!strinId.isEmpty() && !strinName.isEmpty() && !strinLastName.isEmpty() && !strinAge.isEmpty()&&
+                !strinCity.isEmpty()&&!strinPhone.isEmpty()){
+
+            ContentValues registro = new ContentValues();
+            registro.put("id",strinId);
+            registro.put("name",strinName);
+            registro.put("lastName",strinLastName);
+            registro.put("age",strinAge);
+            registro.put("city",strinCity);
+            registro.put("phone",strinPhone);
+
+            int cantidad = BaseDatabase.update("articulos", registro, "codigo=" + strinId, null);
+            BaseDatabase.close();
+
+            if(cantidad == 1){
+                Toast.makeText(this, "Artículo modificado correctamente", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "El artículo no existe", Toast.LENGTH_SHORT).show();
+            }
+
+        } else {
+            Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     }
